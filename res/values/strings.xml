@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">DashClock DeviceInfo Extension</string>
+  <string name="extension_title">Device Info</string>
+  <string name="extension_description">An extension for DashClock to display general device information and hardware specs/stats</string>
+  <string name="action_settings">Settings</string>
+</resources>

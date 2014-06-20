@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.pixelus.dashclock.ext.deviceinfo"
+  android:versionCode="1"
+  android:versionName="1.0-SNAPSHOT">
+
+  <uses-sdk
+    android:minSdkVersion="16"
+    android:targetSdkVersion="19" />
+
+  <application
+    android:allowBackup="true"
+    android:icon="@drawable/ic_launcher"
+    android:label="@string/app_name"
+    android:theme="@style/AppTheme"
+    android:debuggable="true">
+
+    <activity
+      android:name=".DeviceInfoExtensionActivity"
+      android:label="@string/extension_title"
+      android:exported="true" />
+
+    <service
+      android:name=".DeviceInfoExtension"
+      android:icon="@drawable/ic_launcher"
+      android:label="@string/extension_title"
+      android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+      <intent-filter>
+        <action android:name="com.google.android.apps.dashclock.Extension" />
+      </intent-filter>
+
+      <meta-data
+        android:name="protocolVersion"
+        android:value="2" />
+      <meta-data
+        android:name="worldReadable"
+        android:value="true" />
+      <meta-data
+        android:name="description"
+        android:value="@string/extension_description" />
+
+      <!-- A settings activity is optional - this extension doesn't have any settings -->
+      <!--<meta-data-->
+        <!--android:name="settingsActivity"-->
+        <!--android:value=".DeviceInfoExtensionActivity" />-->
+    </service>
+
+  </application>
+
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+</manifest>
