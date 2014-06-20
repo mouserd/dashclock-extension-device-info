@@ -60,12 +60,12 @@ public class DeviceInfoExtension extends DashClockExtension {
 
     long availableMemoryBytes = mi.availMem;
     long totalMemoryBytes = mi.totalMem;
-    int availableMemoryPercentage = (int) Math.ceil(((float) availableMemoryBytes / totalMemoryBytes) * 100);
+    int usedMemoryPercentage = 100 - Math.round(((float) availableMemoryBytes / totalMemoryBytes) * 100);
 
-    Log.d(TAG, format("Memory [total: %d, available: %d, %% available: %d]", totalMemoryBytes, availableMemoryBytes,
-        availableMemoryPercentage));
+    Log.d(TAG, format("Memory [total: %d, available: %d, %% used: %d]", totalMemoryBytes, availableMemoryBytes,
+        usedMemoryPercentage));
 
-    return format("RAM: %d%% free (%s of %s)\n", availableMemoryPercentage,
+    return format("RAM: %d%% used (%s of %s)", usedMemoryPercentage,
         formatFileSize(this, availableMemoryBytes), formatFileSize(this, totalMemoryBytes));
   }
 
