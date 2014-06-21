@@ -90,7 +90,7 @@ public class DeviceInfoExtension extends DashClockExtension {
 
   public String formatMillisToUptime(long millis) {
 
-    if (millis < 0) {
+    if (millis < 1000) {
       return "n/a";
     }
 
@@ -99,13 +99,14 @@ public class DeviceInfoExtension extends DashClockExtension {
     long hours = MILLISECONDS.toHours(millis);
     millis -= TimeUnit.HOURS.toMillis(hours);
     long minutes = MILLISECONDS.toMinutes(millis);
-//    millis -= TimeUnit.MINUTES.toMillis(minutes);
-//    long seconds = MILLISECONDS.toSeconds(millis);
+    millis -= TimeUnit.MINUTES.toMillis(minutes);
+    long seconds = MILLISECONDS.toSeconds(millis);
 
     StringBuilder sb = new StringBuilder(16)
         .append(days).append("d ")
         .append(hours).append("h ")
-        .append(minutes).append("m");
+        .append(minutes).append("m ")
+        .append(seconds).append("s");
 
     return sb.toString();
   }
