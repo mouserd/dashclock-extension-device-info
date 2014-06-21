@@ -46,7 +46,7 @@ public class DeviceInfoExtension extends DashClockExtension {
 
   private String getFormattedUptime() {
 
-    String uptime = formatMillisToUptime(SystemClock.uptimeMillis());
+    String uptime = formatMillisToUptime(SystemClock.elapsedRealtime());
     Log.d(TAG, format("Uptime [%s]", uptime));
 
     return format("Uptime: %s\n", uptime);
