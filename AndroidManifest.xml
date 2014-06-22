@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.pixelus.dashclock.ext.deviceinfo"
+  package="com.pixelus.dashclock.ext.mydevice"
   android:versionCode="1"
   android:versionName="1.0-SNAPSHOT">
 
@@ -16,12 +16,12 @@
     android:debuggable="true">
 
     <activity
-      android:name=".DeviceInfoExtensionActivity"
+      android:name=".MyDeviceExtensionActivity"
       android:label="@string/extension_title"
       android:exported="true" />
 
     <service
-      android:name=".DeviceInfoExtension"
+      android:name=".MyDeviceExtension"
       android:icon="@drawable/ic_launcher"
       android:label="@string/extension_title"
       android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
@@ -42,7 +42,7 @@
       <!-- A settings activity is optional - this extension doesn't have any settings -->
       <!--<meta-data-->
         <!--android:name="settingsActivity"-->
-        <!--android:value=".DeviceInfoExtensionActivity" />-->
+        <!--android:value=".MyDeviceExtensionActivity" />-->
     </service>
 
   </application>

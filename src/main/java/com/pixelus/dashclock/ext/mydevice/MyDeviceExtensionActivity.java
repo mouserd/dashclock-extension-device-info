@@ -1,10 +1,10 @@
-package com.pixelus.dashclock.ext.deviceinfo;
+package com.pixelus.dashclock.ext.mydevice;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class DeviceInfoExtensionActivity extends Activity {
+public class MyDeviceExtensionActivity extends Activity {
 
   /**
    * Called when the activity is first created.

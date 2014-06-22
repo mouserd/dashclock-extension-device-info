@@ -1,2 +1,2 @@
-dashclock-extension-deviceinfo
+dashclock-extension-mydevice
 ==============================

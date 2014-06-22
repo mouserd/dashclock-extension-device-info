@@ -1,4 +1,4 @@
-package com.pixelus.dashclock.ext.deviceinfo;
+package com.pixelus.dashclock.ext.mydevice;
 
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
@@ -19,9 +19,9 @@ import static java.lang.Runtime.getRuntime;
 import static java.lang.String.format;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
-public class DeviceInfoExtension extends DashClockExtension {
+public class MyDeviceExtension extends DashClockExtension {
 
-  public static final String TAG = DeviceInfoExtension.class.getName();
+  public static final String TAG = MyDeviceExtension.class.getName();
 
   @Override
   protected void onUpdateData(int i) {
