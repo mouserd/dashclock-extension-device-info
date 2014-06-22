@@ -2,6 +2,7 @@ package com.pixelus.dashclock.ext.mydevice;
 
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
+import android.os.Build;
 import android.os.SystemClock;
 import android.util.Log;
 import com.google.android.apps.dashclock.api.DashClockExtension;
@@ -72,7 +73,11 @@ public class MyDeviceExtension extends DashClockExtension {
   private String getFriendlyDeviceName() {
 
     BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
-    return myDevice.getName();
+    if (myDevice != null) {
+      return myDevice.getName();
+    }
+
+    return Build.MODEL;
   }
 
   private int getCpuCoreCount() {
@@ -131,7 +136,8 @@ public class MyDeviceExtension extends DashClockExtension {
     Log.d(TAG, format("CPU [user %%: %d, system %%: %d, # %s: %d]", userCpuPercentage, systemCpuPercentage,
         (cpuCoreCount > 1 ? "cores" : "core"), cpuCoreCount));
 
-    return format("CPU: %d%% used (%d cores)\n", userCpuPercentage + systemCpuPercentage, cpuCoreCount);
+    return format("CPU: %d%% used (%d %s)\n", userCpuPercentage + systemCpuPercentage, cpuCoreCount,
+        (cpuCoreCount > 1 ? "cores" : "core"));
   }
 
   private String executeTop() {
