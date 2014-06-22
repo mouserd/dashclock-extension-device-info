@@ -58,15 +58,15 @@ public class DeviceInfoExtension extends DashClockExtension {
     ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
     activityManager.getMemoryInfo(mi);
 
-    long availableMemoryBytes = mi.availMem;
     long totalMemoryBytes = mi.totalMem;
-    int usedMemoryPercentage = 100 - Math.round(((float) availableMemoryBytes / totalMemoryBytes) * 100);
+    long usedMemoryBytes = totalMemoryBytes - mi.availMem;
+    int usedMemoryPercentage = Math.round(((float) usedMemoryBytes / totalMemoryBytes) * 100);
 
-    Log.d(TAG, format("Memory [total: %d, available: %d, %% used: %d]", totalMemoryBytes, availableMemoryBytes,
+    Log.d(TAG, format("Memory [total: %d, used: %d, %% used: %d]", totalMemoryBytes, usedMemoryBytes,
         usedMemoryPercentage));
 
     return format("RAM: %d%% used (%s of %s)", usedMemoryPercentage,
-        formatFileSize(this, availableMemoryBytes), formatFileSize(this, totalMemoryBytes));
+        formatFileSize(this, usedMemoryBytes), formatFileSize(this, totalMemoryBytes));
   }
 
   private String getFriendlyDeviceName() {
