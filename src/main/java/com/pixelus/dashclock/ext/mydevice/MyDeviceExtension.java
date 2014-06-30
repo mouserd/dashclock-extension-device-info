@@ -27,7 +27,7 @@ public class MyDeviceExtension extends DashClockExtension {
   @Override
   protected void onUpdateData(int i) {
 
-    String title = format("%s (v%s)", getFriendlyDeviceName(), RELEASE);
+    String title = getString(R.string.extension_title, getFriendlyDeviceName(), RELEASE);
     Log.d(TAG, format("Title [%s]", title));
 
     StringBuilder body = new StringBuilder(80)
@@ -50,7 +50,7 @@ public class MyDeviceExtension extends DashClockExtension {
     String uptime = formatMillisToUptime(SystemClock.elapsedRealtime());
     Log.d(TAG, format("Uptime [%s]", uptime));
 
-    return format("Uptime: %s\n", uptime);
+    return getString(R.string.extension_expanded_body_uptime_line, uptime);
   }
 
   private String getFormattedMemoryDetails() {
@@ -66,7 +66,7 @@ public class MyDeviceExtension extends DashClockExtension {
     Log.d(TAG, format("Memory [total: %d, used: %d, %% used: %d]", totalMemoryBytes, usedMemoryBytes,
         usedMemoryPercentage));
 
-    return format("RAM: %d%% used (%s of %s)", usedMemoryPercentage,
+    return getString(R.string.extension_expanded_body_ram_line, usedMemoryPercentage,
         formatFileSize(this, usedMemoryBytes), formatFileSize(this, totalMemoryBytes));
   }
 
@@ -96,7 +96,7 @@ public class MyDeviceExtension extends DashClockExtension {
   public String formatMillisToUptime(long millis) {
 
     if (millis < 1000) {
-      return "n/a";
+      return getString(R.string.extension_expanded_body_uptime_unavailable);
     }
 
     long days = MILLISECONDS.toDays(millis);
@@ -107,13 +107,7 @@ public class MyDeviceExtension extends DashClockExtension {
     millis -= TimeUnit.MINUTES.toMillis(minutes);
     long seconds = MILLISECONDS.toSeconds(millis);
 
-    StringBuilder sb = new StringBuilder(16)
-        .append(days).append("d ")
-        .append(hours).append("h ")
-        .append(minutes).append("m ")
-        .append(seconds).append("s");
-
-    return sb.toString();
+    return getString(R.string.extension_expanded_body_uptime_format, days, hours, minutes, seconds);
   }
 
   private String getFormattedCpuDetails() {
@@ -136,8 +130,8 @@ public class MyDeviceExtension extends DashClockExtension {
     Log.d(TAG, format("CPU [user %%: %d, system %%: %d, # %s: %d]", userCpuPercentage, systemCpuPercentage,
         (cpuCoreCount > 1 ? "cores" : "core"), cpuCoreCount));
 
-    return format("CPU: %d%% used (%d %s)\n", userCpuPercentage + systemCpuPercentage, cpuCoreCount,
-        (cpuCoreCount > 1 ? "cores" : "core"));
+    return getString(R.string.extension_expanded_body_cpu_line, userCpuPercentage + systemCpuPercentage,
+        cpuCoreCount, (cpuCoreCount > 1 ? "cores" : "core"));
   }
 
   private String executeTop() {
