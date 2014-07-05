@@ -12,6 +12,10 @@ This extension shows basic device information including:
 
 This extension is free to use - any feedback or feature requests welcomed.
 
+<img src="playstore/screenshots/thumbs/s5-device-1.png" 
+  align="center">&nbsp;&nbsp;<img 
+  src="playstore/screenshots/thumbs/s5-device-2.png" align="center">
+
 ## Technical Details
 
 This application is built using the [Maven Android Plugin](https://code.google.com/p/maven-android-plugin/).  See the 
