@@ -1,4 +1,4 @@
-## <img src="https://raw.githubusercontent.com/mouserd/dashclock-extension-mydevice/master/res/drawable-ldpi/ic_launcher.png"> DashClock MyDevice Extension
+## <img src="res/drawable-ldpi/ic_launcher.png"> DashClock MyDevice Extension
 
 [DashClock MyDevice Extension](https://play.google.com/store/apps/details?id=com.pixelus.dashclock.ext.mydevice) 
 is an extension for the 
@@ -13,8 +13,7 @@ This extension shows basic device information including:
 This extension is free to use - any feedback or feature requests welcomed.
 
 <img src="playstore/screenshots/thumbs/s5-device-1.png" 
-  align="center">&nbsp;&nbsp;<img 
-  src="playstore/screenshots/thumbs/s5-device-2.png" align="center">
+  align="center">&nbsp;&nbsp;<img src="playstore/screenshots/thumbs/s5-device-2.png" align="center">
 
 ## Technical Details
 
