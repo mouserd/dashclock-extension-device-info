@@ -13,13 +13,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.TimeUnit;
 
 import static android.os.Build.VERSION.RELEASE;
 import static android.text.format.Formatter.formatFileSize;
 import static java.lang.Runtime.getRuntime;
 import static java.lang.String.format;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class MyDeviceExtension extends DashClockExtension {
 
@@ -35,35 +33,39 @@ public class MyDeviceExtension extends DashClockExtension {
     Pair<String, String> memoryDetails = getFormattedMemoryDetails();
     Pair<String, String> uptimeDetails = getFormattedUptime();
 
-    StringBuilder status = new StringBuilder()
-        .append(uptimeDetails.second)
-        .append(memoryDetails.second)
-        .append(" ")
-        .append(cpuDetails.second);
-
-    StringBuilder expandedBody = new StringBuilder(80)
-        .append(uptimeDetails.first)
-        .append(cpuDetails.first)
-        .append(memoryDetails.first);
+    String status = uptimeDetails.second + memoryDetails.second + " " + cpuDetails.second;
+    String expandedBody = uptimeDetails.first + cpuDetails.first + memoryDetails.first;
 
     publishUpdate(new ExtensionData()
             .visible(true)
             .icon(R.drawable.ic_launcher)
-            .status(status.toString())
+            .status(status)
             .expandedTitle(expandedTitle)
-            .expandedBody(expandedBody.toString())
+            .expandedBody(expandedBody)
         //.clickIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))));
     );
   }
 
   private Pair<String, String> getFormattedUptime() {
 
-    Pair<String, String> uptime = formatMillisToUptime(SystemClock.elapsedRealtime());
+    Uptime uptime = new Uptime(SystemClock.elapsedRealtime());
+    if (!uptime.isValid()) {
+
+      return new Pair<String, String>(
+          getString(R.string.extension_expanded_body_uptime_unavailable),
+          getString(R.string.extension_expanded_body_uptime_unavailable));
+    }
+
+    String uptimeFormatted = getString(R.string.extension_expanded_body_uptime_format, uptime.getDays(),
+        uptime.getHours(), uptime.getMinutes(), uptime.getSeconds());
+    String uptimeFormattedShort = getString(R.string.extension_expanded_body_uptime_shortformat, uptime.getDays(),
+        uptime.getHours(), uptime.getMinutes());
+
     Log.d(TAG, format("Uptime [%s]", uptime));
 
     return new Pair<String, String>(
-        getString(R.string.extension_expanded_body_uptime_line, uptime.first),
-        getString(R.string.extension_status_uptime, uptime.second));
+        getString(R.string.extension_expanded_body_uptime_line, uptimeFormatted),
+        getString(R.string.extension_status_uptime, uptimeFormattedShort));
   }
 
   private Pair<String, String> getFormattedMemoryDetails() {
@@ -95,40 +97,6 @@ public class MyDeviceExtension extends DashClockExtension {
     return Build.MODEL;
   }
 
-  private int getCpuCoreCount() {
-
-    try {
-
-      File dir = new File("/sys/devices/system/cpu/");  // Directory containing CPU info
-      return dir.listFiles(new CpuFilter()).length;     // Filter the files for CPU types, the result being
-      // the number of cores (virtual CPU devices)
-    } catch (Exception e) {
-
-      return 1;
-    }
-  }
-
-  public Pair<String, String> formatMillisToUptime(long millis) {
-
-    if (millis < 1000) {
-      return new Pair<String, String>(
-          getString(R.string.extension_expanded_body_uptime_unavailable),
-          getString(R.string.extension_expanded_body_uptime_unavailable));
-    }
-
-    long days = MILLISECONDS.toDays(millis);
-    millis -= TimeUnit.DAYS.toMillis(days);
-    long hours = MILLISECONDS.toHours(millis);
-    millis -= TimeUnit.HOURS.toMillis(hours);
-    long minutes = MILLISECONDS.toMinutes(millis);
-    millis -= TimeUnit.MINUTES.toMillis(minutes);
-    long seconds = MILLISECONDS.toSeconds(millis);
-
-    return new Pair<String, String>(
-        getString(R.string.extension_expanded_body_uptime_format, days, hours, minutes, seconds),
-        getString(R.string.extension_expanded_body_uptime_shortformat, days, hours, minutes));
-  }
-
   private Pair<String, String> getFormattedCpuDetails() {
 
     String topCpuStats = executeTop();
@@ -153,6 +121,19 @@ public class MyDeviceExtension extends DashClockExtension {
         getString(R.string.extension_expanded_body_cpu_line, userCpuPercentage + systemCpuPercentage,
             cpuCoreCount, (cpuCoreCount > 1 ? "cores" : "core")),
         getString(R.string.extension_status_cpu, userCpuPercentage));
+  }
+
+  private int getCpuCoreCount() {
+
+    try {
+
+      File dir = new File("/sys/devices/system/cpu/");  // Directory containing CPU info
+      return dir.listFiles(new CpuFilter()).length;     // Filter the files for CPU types, the result being
+      // the number of cores (virtual CPU devices)
+    } catch (Exception e) {
+
+      return 1;
+    }
   }
 
   private String executeTop() {
