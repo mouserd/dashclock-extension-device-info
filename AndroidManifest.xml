@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="6" android:versionName="1.1.1"
-          package="com.pixelus.dashclock.ext.mydevice">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="6" android:versionName="1.1.1" package="com.pixelus.dashclock.ext.mydevice">
 
   <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="19"/>
 
-  <application android:allowBackup="true" android:debuggable="false" android:icon="@drawable/ic_launcher"
-               android:label="@string/app_name" android:theme="@style/AppTheme">
+  <application android:allowBackup="true" android:debuggable="false" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme">
 
-    <activity android:exported="true" android:label="@string/extension_label"
-              android:name=".MyDeviceExtensionActivity"/>
+    <activity android:exported="true" android:label="@string/extension_label" android:name=".MyDeviceExtensionActivity"/>
 
-    <service android:icon="@drawable/ic_launcher" android:label="@string/extension_label"
-             android:name=".MyDeviceExtension"
-             android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+    <service android:icon="@drawable/ic_launcher" android:label="@string/extension_label" android:name=".MyDeviceExtension" android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
       <intent-filter>
         <action android:name="com.google.android.apps.dashclock.Extension"/>
       </intent-filter>
@@ -22,9 +17,9 @@
       <meta-data android:name="description" android:value="@string/extension_description"/>
 
       <!-- A settings activity is optional - this extension doesn't have any settings -->
-      <!--<meta-data-->
-      <!--android:name="settingsActivity"-->
-      <!--android:value=".MyDeviceExtensionActivity" />-->
+      <meta-data
+      android:name="settingsActivity"
+      android:value=".MyDeviceExtensionActivity" />
     </service>
 
   </application>

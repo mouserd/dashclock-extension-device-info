@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+  <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+  <CheckBoxPreference
+      android:key="use_system_device_name"
+      android:title="@string/pref_use_system_device_name_title"
+      android:defaultValue="true"
+      android:disableDependentsState="true"/>
+
+  <EditTextPreference
+      android:key="alternate_device_name"
+      android:title="@string/pref_alternate_device_name_title"
+      android:defaultValue="@string/pref_alternate_device_name_default"
+      android:selectAllOnFocus="true"
+      android:inputType="textCapWords"
+      android:capitalize="words"
+      android:singleLine="true"
+      android:maxLines="1"
+      android:dependency="use_system_device_name"/>
+
+  <CheckBoxPreference
+      android:key="show_device_uptime"
+      android:title="@string/pref_show_uptime_title"
+      android:defaultValue="true"/>
+
+  <CheckBoxPreference
+      android:key="show_device_cpu_usage"
+      android:title="@string/pref_show_cpu_usage_title"
+      android:defaultValue="true"/>
+
+  <CheckBoxPreference
+      android:key="show_device_memory_usage"
+      android:title="@string/pref_show_memory_usage_title"
+      android:defaultValue="true"/>
+
+</PreferenceScreen>

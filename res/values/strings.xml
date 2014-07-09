@@ -14,4 +14,10 @@
   <string name="extension_status_cpu" formatted="false">CPU: %d%%</string>
   <string name="extension_status_ram" formatted="false">RAM: %d%%</string>
   <string name="action_settings">Settings</string>
+  <string name="pref_use_system_device_name_title">Use system device name</string>
+  <string name="pref_alternate_device_name_title">Device Name</string>
+  <string name="pref_alternate_device_name_default"></string>
+  <string name="pref_show_uptime_title">Show uptime</string>
+  <string name="pref_show_cpu_usage_title">Show CPU usage</string>
+  <string name="pref_show_memory_usage_title">Show memory usage</string>
 </resources>

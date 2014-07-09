@@ -2,8 +2,10 @@ package com.pixelus.dashclock.ext.mydevice;
 
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothAdapter;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
 import com.google.android.apps.dashclock.api.DashClockExtension;
@@ -22,6 +24,10 @@ import static java.lang.String.format;
 public class MyDeviceExtension extends DashClockExtension {
 
   public static final String TAG = MyDeviceExtension.class.getName();
+
+  // TODO These should be declared in strings.xml
+  public static final String ALTERNATE_DEVICE_NAME = "alternate_device_name";
+  public static final String USE_SYSTEM_DEVICE_NAME = "use_system_device_name";
 
   @Override
   protected void onUpdateData(int i) {
@@ -88,6 +94,16 @@ public class MyDeviceExtension extends DashClockExtension {
   }
 
   private String getFriendlyDeviceName() {
+
+    final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+    final String alternateDeviceName = sp.getString(ALTERNATE_DEVICE_NAME, null);
+    final Boolean useSystemDeviceName = sp.getBoolean(USE_SYSTEM_DEVICE_NAME, true);
+
+    if (!useSystemDeviceName) {
+      Log.d(TAG, "CUSTOM DEVICE NAME: " + alternateDeviceName);
+      return  alternateDeviceName;
+    }
+
 
     BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
     if (myDevice != null) {
