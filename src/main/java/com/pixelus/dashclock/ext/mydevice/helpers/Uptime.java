@@ -1,5 +1,8 @@
-package com.pixelus.dashclock.ext.mydevice;
+package com.pixelus.dashclock.ext.mydevice.helpers;
 
+import com.pixelus.dashclock.ext.mydevice.R;
+
+import static com.pixelus.dashclock.ext.mydevice.MyDeviceExtension.getContext;
 import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -28,23 +31,26 @@ public class Uptime {
     seconds = MILLISECONDS.toSeconds(uptimeMillis);
   }
 
-  public boolean isValid() {
+  private boolean isValid() {
     return uptimeMillis > 1000; // valid is deemed as at least 1 second has elapsed!
   }
 
-  public long getDays() {
-    return days;
+  public String getFormattedUptime() {
+
+    if (!isValid()) {
+      return getContext().getString(R.string.extension_expanded_body_uptime_unavailable);
+    }
+
+    return getContext().getString(R.string.extension_expanded_body_uptime_format, days, hours, minutes, seconds);
+
   }
 
-  public long getHours() {
-    return hours;
-  }
+  public String getFormattedShortUptime() {
 
-  public long getMinutes() {
-    return minutes;
-  }
+    if (!isValid()) {
+      return getContext().getString(R.string.extension_expanded_body_uptime_unavailable);
+    }
 
-  public long getSeconds() {
-    return seconds;
+    return getContext().getString(R.string.extension_expanded_body_uptime_shortformat, days, hours, minutes);
   }
 }

@@ -1,4 +1,4 @@
-package com.pixelus.dashclock.ext.mydevice;
+package com.pixelus.dashclock.ext.mydevice.helpers;
 
 
 import java.io.File;

@@ -3,10 +3,10 @@
   <!-- NOTE: EditTextPreference accepts EditText attributes. -->
   <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
   <CheckBoxPreference
-      android:key="use_system_device_name"
-      android:title="@string/pref_use_system_device_name_title"
-      android:defaultValue="true"
-      android:disableDependentsState="true"/>
+      android:key="use_alternate_device_name"
+      android:title="@string/pref_use_alternate_device_name_title"
+      android:defaultValue="false"
+      android:disableDependentsState="false"/>
 
   <EditTextPreference
       android:key="alternate_device_name"
@@ -17,7 +17,7 @@
       android:capitalize="words"
       android:singleLine="true"
       android:maxLines="1"
-      android:dependency="use_system_device_name"/>
+      android:dependency="use_alternate_device_name"/>
 
   <CheckBoxPreference
       android:key="show_device_uptime"

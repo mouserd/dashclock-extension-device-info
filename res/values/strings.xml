@@ -4,19 +4,17 @@
   <string name="extension_label" formatted="false">MyDevice</string>
   <string name="extension_title" formatted="false">%s (v%s)</string>
   <string name="extension_description">An extension for DashClock to display general device information and hardware specs/stats</string>
-  <string name="extension_expanded_body_uptime_line" formatted="false">Uptime: %s\n</string>
-  <string name="extension_expanded_body_uptime_format" formatted="false">%dd %dh %dm %ds</string>
-  <string name="extension_expanded_body_uptime_shortformat" formatted="false">%dd %dh %dm</string>
+  <string name="extension_expanded_body_uptime_format" formatted="false">Uptime: %dd %dh %dm %ds</string>
+  <string name="extension_expanded_body_uptime_shortformat" formatted="false">Up: %dd %dh %dm</string>
   <string name="extension_expanded_body_uptime_unavailable">n/a</string>
-  <string name="extension_expanded_body_cpu_line" formatted="false">CPU: %d%% used (%d %s)\n</string>
+  <string name="extension_expanded_body_cpu_line" formatted="false">CPU: %d%% used (%d %s)</string>
   <string name="extension_expanded_body_ram_line" formatted="false">RAM: %d%% used (%s of %s)</string>
-  <string name="extension_status_uptime" formatted="false">Up: %s\n</string>
   <string name="extension_status_cpu" formatted="false">CPU: %d%%</string>
   <string name="extension_status_ram" formatted="false">RAM: %d%%</string>
   <string name="action_settings">Settings</string>
-  <string name="pref_use_system_device_name_title">Use system device name</string>
-  <string name="pref_alternate_device_name_title">Device Name</string>
-  <string name="pref_alternate_device_name_default"></string>
+  <string name="pref_use_alternate_device_name_title">Use a custom Device Name</string>
+  <string name="pref_alternate_device_name_title">Custom Device Name</string>
+  <string name="pref_alternate_device_name_default">MyDevice</string>
   <string name="pref_show_uptime_title">Show uptime</string>
   <string name="pref_show_cpu_usage_title">Show CPU usage</string>
   <string name="pref_show_memory_usage_title">Show memory usage</string>
