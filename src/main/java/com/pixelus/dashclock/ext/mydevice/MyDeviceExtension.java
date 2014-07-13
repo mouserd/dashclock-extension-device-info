@@ -3,6 +3,7 @@ package com.pixelus.dashclock.ext.mydevice;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import com.crashlytics.android.Crashlytics;
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
 import com.pixelus.dashclock.ext.mydevice.builder.MyDeviceMessageBuilder;
@@ -19,6 +20,7 @@ public class MyDeviceExtension extends DashClockExtension {
   public static final String SHOW_DEVICE_MEMORY_USAGE = "show_device_memory_usage";
 
   private static Context context;
+  private boolean crashlyticsStarted = false;
 
   @Override public void onCreate() {
     super.onCreate();
@@ -31,6 +33,11 @@ public class MyDeviceExtension extends DashClockExtension {
 
   @Override
   protected void onUpdateData(int i) {
+
+    if (!crashlyticsStarted) {
+      Crashlytics.start(this);
+      crashlyticsStarted = true;
+    }
 
     final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
