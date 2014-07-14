@@ -10,6 +10,7 @@
   <name>DashClock MyDevice Extension</name>
 
   <properties>
+    <project.versionCode>6</project.versionCode>
     <platform.version>4.1.1.4</platform.version>
     <android.plugin.version>3.9.0-rc.2</android.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,6 +57,16 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
+    <resources>
+      <resource>
+        <targetPath>${project.basedir}/target/filtered-manifest</targetPath>
+        <filtering>true</filtering>
+        <directory>${basedir}</directory>
+        <includes>
+          <include>AndroidManifest.xml</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -94,15 +105,9 @@
           <manifest>
             <debuggable>true</debuggable>
           </manifest>
+          <androidManifestFile>${project.build.directory}/filtered-manifest/AndroidManifest.xml</androidManifestFile>
         </configuration>
         <executions>
-          <execution>
-            <id>manifestUpdate</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>manifest-update</goal>
-            </goals>
-          </execution>
           <execution>
             <id>alignApk</id>
             <phase>package</phase>
@@ -136,6 +141,29 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>parse-version</id>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>resources</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -151,17 +179,22 @@
         </property>
       </activation>
       <properties>
+        <debuggable>true</debuggable>
         <deployment.stage>In Development</deployment.stage>
       </properties>
     </profile>
     <profile>
       <id>production</id>
       <properties>
+        <debuggable>false</debuggable>
         <deployment.stage>In Production</deployment.stage>
       </properties>
     </profile>
     <profile>
       <id>release</id>
+      <properties>
+        <debuggable>false</debuggable>
+      </properties>
       <!-- via this activation the profile is automatically used when the release
         is done with the maven release plugin -->
       <activation>
@@ -223,8 +256,7 @@
                 <skip>false</skip>
                 <verbose>true</verbose>
                 <inputApk>${project.build.directory}/${project.artifactId}.apk</inputApk>
-                <outputApk>${project.build.directory}/${project.artifactId}-signed-aligned.apk
-                </outputApk>
+                <outputApk>${project.build.directory}/${project.artifactId}-signed-aligned.apk</outputApk>
               </zipalign>
               <manifest>
                 <debuggable>false</debuggable>
@@ -233,15 +265,9 @@
               <proguard>
                 <skip>false</skip>
               </proguard>
+              <androidManifestFile>${project.build.directory}/filtered-manifest/AndroidManifest.xml</androidManifestFile>
             </configuration>
             <executions>
-              <execution>
-                <id>manifestUpdate</id>
-                <phase>process-resources</phase>
-                <goals>
-                  <goal>manifest-update</goal>
-                </goals>
-              </execution>
               <execution>
                 <id>alignApk</id>
                 <phase>package</phase>
