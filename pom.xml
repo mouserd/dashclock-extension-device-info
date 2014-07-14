@@ -116,6 +116,11 @@
         <groupId>com.crashlytics</groupId>
         <artifactId>crashlytics-maven</artifactId>
         <version>1.9.1</version>
+        <configuration>
+          <androidAssetsPath>${project.basedir}/assets</androidAssetsPath>
+          <androidManifestPath>${project.basedir}/AndroidManifest.xml</androidManifestPath>
+          <androidResPath>${project.basedir}/res</androidResPath>
+        </configuration>
         <executions>
           <execution>
             <id>GenerateResources</id>
