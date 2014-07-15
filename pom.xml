@@ -10,7 +10,7 @@
   <name>DashClock MyDevice Extension</name>
 
   <properties>
-    <project.versionCode>7</project.versionCode>
+    <project.versionCode>8</project.versionCode>
     <platform.version>4.1.1.4</platform.version>
     <android.plugin.version>3.9.0-rc.2</android.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

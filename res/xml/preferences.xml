@@ -1,4 +1,6 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    android:title="@string/extension_settings_title"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
   <!-- NOTE: EditTextPreference accepts EditText attributes. -->
   <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->

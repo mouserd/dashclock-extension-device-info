@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">DashClock MyDevice Extension</string>
+  <string name="extension_settings_title" formatted="false">MyDevice Settings</string>
   <string name="extension_label" formatted="false">MyDevice</string>
   <string name="extension_title" formatted="false">%s (v%s)</string>
   <string name="extension_description">Displays general device information and hardware statistics</string>
