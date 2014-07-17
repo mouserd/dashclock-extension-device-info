@@ -78,6 +78,7 @@
               the eclipse buildpath -->
             <phase>initialize</phase>
             <goals>
+              <goal>resources</goal>
               <goal>copy-resources</goal>
             </goals>
             <configuration>
@@ -144,22 +145,12 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9</version>
         <executions>
           <execution>
             <id>parse-version</id>
             <goals>
               <goal>parse-version</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>initialize</phase>
-            <goals>
-              <goal>resources</goal>
             </goals>
           </execution>
         </executions>
