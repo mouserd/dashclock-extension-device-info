@@ -31,4 +31,6 @@ proguard/
 
 # IDE
 .idea/
-*.iml
+
+# Crashlytics
+crashlytics.properties
