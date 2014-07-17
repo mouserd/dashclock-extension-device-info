@@ -34,3 +34,5 @@ proguard/
 
 # Crashlytics
 crashlytics.properties
+com_crashlytics_export_strings.xml
+crashlytics-build.properties
