@@ -40,7 +40,7 @@ mvn android:deploy
 When building a release version of the application, the generated artifacts will be suitable for uploading directly into 
 the Google Playstore.  As such, the release build process will ensure that the code is shrunk, optimized and obfuscated
 (using proguard), signed (certificate not included with this repo), and zip-aligned.  The resulting 
-`target/mydevice-signed-aligned.apk` is then ready for upload into the playstore.  To initiate a new release, simply:
+`target/device-info-signed-aligned.apk` is then ready for upload into the playstore.  To initiate a new release, simply:
 
 1. Bump maven version:  
    Update `pom.xml` to increment the applications version  
