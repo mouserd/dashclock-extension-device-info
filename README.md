@@ -1,6 +1,6 @@
-## <img src="res/drawable-ldpi/ic_launcher.png"> DashClock MyDevice Extension
+## <img src="res/drawable-ldpi/ic_launcher.png"> DashClock DeviceInfo Extension
 
-[DashClock MyDevice Extension](https://play.google.com/store/apps/details?id=com.pixelus.dashclock.ext.mydevice) 
+[DashClock DeviceInfo Extension](https://play.google.com/store/apps/details?id=com.pixelus.dashclock.ext.mydevice) 
 is an extension for the 
 [DashClock Widget](https://play.google.com/store/apps/details?id=net.nurik.roman.dashclock) from Roman Nurik.
 

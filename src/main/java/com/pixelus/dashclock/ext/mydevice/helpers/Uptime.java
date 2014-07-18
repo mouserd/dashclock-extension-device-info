@@ -2,7 +2,7 @@ package com.pixelus.dashclock.ext.mydevice.helpers;
 
 import com.pixelus.dashclock.ext.mydevice.R;
 
-import static com.pixelus.dashclock.ext.mydevice.MyDeviceExtension.getContext;
+import static com.pixelus.dashclock.ext.mydevice.DeviceInfoExtension.getContext;
 import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;

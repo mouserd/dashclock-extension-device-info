@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import static com.pixelus.dashclock.ext.mydevice.MyDeviceExtension.getContext;
+import static com.pixelus.dashclock.ext.mydevice.DeviceInfoExtension.getContext;
 import static java.lang.Runtime.getRuntime;
 import static java.lang.String.format;
 

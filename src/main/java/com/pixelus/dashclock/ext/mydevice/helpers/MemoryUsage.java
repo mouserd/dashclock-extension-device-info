@@ -5,7 +5,7 @@ import android.util.Log;
 import com.pixelus.dashclock.ext.mydevice.R;
 
 import static android.text.format.Formatter.formatFileSize;
-import static com.pixelus.dashclock.ext.mydevice.MyDeviceExtension.getContext;
+import static com.pixelus.dashclock.ext.mydevice.DeviceInfoExtension.getContext;
 import static java.lang.String.format;
 
 public class MemoryUsage {

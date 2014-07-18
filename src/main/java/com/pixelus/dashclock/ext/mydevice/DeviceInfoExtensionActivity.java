@@ -11,7 +11,7 @@ import android.preference.PreferenceGroup;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 
-public class MyDeviceExtensionActivity extends PreferenceActivity
+public class DeviceInfoExtensionActivity extends PreferenceActivity
     implements SharedPreferences.OnSharedPreferenceChangeListener {
 
   public void onCreate(Bundle savedInstanceState) {

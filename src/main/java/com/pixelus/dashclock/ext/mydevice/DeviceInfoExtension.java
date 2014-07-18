@@ -6,11 +6,11 @@ import android.preference.PreferenceManager;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
-import com.pixelus.dashclock.ext.mydevice.builder.MyDeviceMessageBuilder;
+import com.pixelus.dashclock.ext.mydevice.builder.DeviceInfoMessageBuilder;
 
-public class MyDeviceExtension extends DashClockExtension {
+public class DeviceInfoExtension extends DashClockExtension {
 
-  public static final String TAG = MyDeviceExtension.class.getName();
+  public static final String TAG = DeviceInfoExtension.class.getName();
 
   // TODO These should be declared in strings.xml
   public static final String ALTERNATE_DEVICE_NAME = "alternate_device_name";
@@ -24,7 +24,7 @@ public class MyDeviceExtension extends DashClockExtension {
 
   @Override public void onCreate() {
     super.onCreate();
-    MyDeviceExtension.context = getApplicationContext();
+    DeviceInfoExtension.context = getApplicationContext();
   }
 
   public static Context getContext() {
@@ -47,7 +47,7 @@ public class MyDeviceExtension extends DashClockExtension {
     final boolean useAlternateDeviceName = sp.getBoolean(USE_ALTERNATE_DEVICE_NAME, false);
     final String alternateDeviceName = sp.getString(ALTERNATE_DEVICE_NAME, "");
 
-    final MyDeviceMessageBuilder myDeviceMessageBuilder = new MyDeviceMessageBuilder()
+    final DeviceInfoMessageBuilder deviceInfoMessageBuilder = new DeviceInfoMessageBuilder()
         .withAlternateDeviceName(useAlternateDeviceName, alternateDeviceName)
         .withDeviceUptime(showDeviceUptime)
         .withDeviceCpuUsage(showDeviceCpuUsage)
@@ -56,9 +56,9 @@ public class MyDeviceExtension extends DashClockExtension {
     publishUpdate(new ExtensionData()
             .visible(true)
             .icon(R.drawable.ic_launcher)
-            .status(myDeviceMessageBuilder.buildStatusMessage())
-            .expandedTitle(myDeviceMessageBuilder.buildExpandedTitleMessage())
-            .expandedBody(myDeviceMessageBuilder.buildExpandedBodyMessage())
+            .status(deviceInfoMessageBuilder.buildStatusMessage())
+            .expandedTitle(deviceInfoMessageBuilder.buildExpandedTitleMessage())
+            .expandedBody(deviceInfoMessageBuilder.buildExpandedBodyMessage())
         //.clickIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))));
     );
   }

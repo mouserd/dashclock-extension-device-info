@@ -7,16 +7,16 @@ import com.pixelus.dashclock.ext.mydevice.helpers.DeviceName;
 import com.pixelus.dashclock.ext.mydevice.helpers.MemoryUsage;
 import com.pixelus.dashclock.ext.mydevice.helpers.Uptime;
 
-public class MyDeviceMessageBuilder {
+public class DeviceInfoMessageBuilder {
 
-  private static final String TAG = MyDeviceMessageBuilder.class.getName();
+  private static final String TAG = DeviceInfoMessageBuilder.class.getName();
 
   private Uptime uptime;
   private CpuUsage cpuUsage;
   private MemoryUsage memoryUsage;
   private DeviceName deviceName;
 
-  public MyDeviceMessageBuilder withAlternateDeviceName(boolean useAlternateDeviceName, String alternateDeviceName) {
+  public DeviceInfoMessageBuilder withAlternateDeviceName(boolean useAlternateDeviceName, String alternateDeviceName) {
     String _alternateDeviceName = null;
     if (useAlternateDeviceName && alternateDeviceName != null) {
       _alternateDeviceName = alternateDeviceName;
@@ -27,7 +27,7 @@ public class MyDeviceMessageBuilder {
     return this;
   }
 
-  public MyDeviceMessageBuilder withDeviceUptime(boolean withDeviceUptime) {
+  public DeviceInfoMessageBuilder withDeviceUptime(boolean withDeviceUptime) {
 
     if (withDeviceUptime) {
       uptime = new Uptime(SystemClock.elapsedRealtime());
@@ -36,7 +36,7 @@ public class MyDeviceMessageBuilder {
     return this;
   }
 
-  public MyDeviceMessageBuilder withDeviceCpuUsage(boolean withDeviceCpuUsage) {
+  public DeviceInfoMessageBuilder withDeviceCpuUsage(boolean withDeviceCpuUsage) {
 
     if (withDeviceCpuUsage) {
       cpuUsage = new CpuUsage();
@@ -45,7 +45,7 @@ public class MyDeviceMessageBuilder {
     return this;
   }
 
-  public MyDeviceMessageBuilder withDeviceMemoryUsage(boolean withDeviceMemoryUsage) {
+  public DeviceInfoMessageBuilder withDeviceMemoryUsage(boolean withDeviceMemoryUsage) {
 
     if (withDeviceMemoryUsage) {
       memoryUsage = new MemoryUsage();

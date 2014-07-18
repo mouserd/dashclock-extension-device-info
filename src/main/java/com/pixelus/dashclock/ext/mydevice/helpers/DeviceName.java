@@ -7,7 +7,7 @@ import android.util.Log;
 import com.pixelus.dashclock.ext.mydevice.R;
 
 import static android.os.Build.VERSION.RELEASE;
-import static com.pixelus.dashclock.ext.mydevice.MyDeviceExtension.getContext;
+import static com.pixelus.dashclock.ext.mydevice.DeviceInfoExtension.getContext;
 
 public class DeviceName {
 

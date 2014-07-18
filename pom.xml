@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.pixelus.dashclock.ext</groupId>
-  <artifactId>mydevice</artifactId>
-  <version>1.2.0</version>
+  <artifactId>device-info</artifactId>
+  <version>1.2.1</version>
   <packaging>apk</packaging>
-  <name>DashClock MyDevice Extension</name>
+  <name>DashClock Device Info Extension</name>
 
   <properties>
-    <project.versionCode>8</project.versionCode>
+    <project.versionCode>9</project.versionCode>
     <platform.version>4.1.1.4</platform.version>
     <android.plugin.version>3.9.0-rc.2</android.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
