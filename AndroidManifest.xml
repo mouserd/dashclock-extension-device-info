@@ -26,7 +26,7 @@
       <!-- A settings activity is optional - this extension doesn't have any settings -->
       <meta-data
           android:name="settingsActivity"
-          android:value=".MyDeviceExtensionActivity"/>
+          android:value=".DeviceInfoExtensionActivity"/>
     </service>
 
     <meta-data android:name="com.crashlytics.ApiKey" android:value="e40d13de9e45727c7dc411977f11d4913a520bf1"/>
