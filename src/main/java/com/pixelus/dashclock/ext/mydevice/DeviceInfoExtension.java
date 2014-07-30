@@ -10,9 +10,6 @@ import com.pixelus.dashclock.ext.mydevice.builder.DeviceInfoMessageBuilder;
 
 public class DeviceInfoExtension extends DashClockExtension {
 
-  public static final String TAG = DeviceInfoExtension.class.getSimpleName();
-
-  // TODO These should be declared in strings.xml
   public static final String ALTERNATE_DEVICE_NAME = "alternate_device_name";
   public static final String USE_ALTERNATE_DEVICE_NAME = "use_alternate_device_name";
   public static final String SHOW_DEVICE_UPTIME = "show_device_uptime";
@@ -20,12 +17,16 @@ public class DeviceInfoExtension extends DashClockExtension {
   public static final String SHOW_DEVICE_MEMORY_USAGE = "show_device_memory_usage";
 
   private static Context context;
-  private boolean crashlyticsStarted = false;
 
-  @Override public void onCreate() {
+  @Override
+  public void onCreate() {
     super.onCreate();
+
+    Crashlytics.start(this);
+
     DeviceInfoExtension.context = getApplicationContext();
   }
+
 
   public static Context getContext() {
     return context;
@@ -33,11 +34,6 @@ public class DeviceInfoExtension extends DashClockExtension {
 
   @Override
   protected void onUpdateData(int i) {
-
-    if (!crashlyticsStarted) {
-      Crashlytics.start(this);
-      crashlyticsStarted = true;
-    }
 
     final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
