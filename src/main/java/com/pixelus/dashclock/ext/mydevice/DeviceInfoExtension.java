@@ -10,7 +10,7 @@ import com.pixelus.dashclock.ext.mydevice.builder.DeviceInfoMessageBuilder;
 
 public class DeviceInfoExtension extends DashClockExtension {
 
-  public static final String TAG = DeviceInfoExtension.class.getName();
+  public static final String TAG = DeviceInfoExtension.class.getSimpleName();
 
   // TODO These should be declared in strings.xml
   public static final String ALTERNATE_DEVICE_NAME = "alternate_device_name";

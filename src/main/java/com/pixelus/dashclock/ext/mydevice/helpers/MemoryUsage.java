@@ -10,7 +10,7 @@ import static java.lang.String.format;
 
 public class MemoryUsage {
 
-  private static final String TAG = MemoryUsage.class.getName();
+  private static final String TAG = MemoryUsage.class.getSimpleName();
 
   private long totalMemoryBytes;
   private long usedMemoryBytes;

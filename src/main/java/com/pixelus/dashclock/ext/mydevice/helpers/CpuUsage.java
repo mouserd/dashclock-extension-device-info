@@ -14,7 +14,7 @@ import static java.lang.String.format;
 
 public class CpuUsage {
 
-  private static final String TAG = CpuUsage.class.getName();
+  private static final String TAG = CpuUsage.class.getSimpleName();
 
   private int userCpuPercentage;
   private int systemCpuPercentage;

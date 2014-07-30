@@ -9,7 +9,7 @@ import com.pixelus.dashclock.ext.mydevice.helpers.Uptime;
 
 public class DeviceInfoMessageBuilder {
 
-  private static final String TAG = DeviceInfoMessageBuilder.class.getName();
+  private static final String TAG = DeviceInfoMessageBuilder.class.getSimpleName();
 
   private Uptime uptime;
   private CpuUsage cpuUsage;

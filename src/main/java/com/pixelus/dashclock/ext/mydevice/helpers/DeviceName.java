@@ -11,7 +11,7 @@ import static com.pixelus.dashclock.ext.mydevice.DeviceInfoExtension.getContext;
 
 public class DeviceName {
 
-  private static final String TAG = DeviceName.class.getName();
+  private static final String TAG = DeviceName.class.getSimpleName();
 
   private String alternateDeviceName;
 
