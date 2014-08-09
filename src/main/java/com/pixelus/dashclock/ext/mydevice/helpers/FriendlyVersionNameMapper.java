@@ -39,10 +39,10 @@ public class FriendlyVersionNameMapper {
       case VERSION_CODES.ICE_CREAM_SANDWICH_MR1:
         return "Ice Cream Sandwich";
       case VERSION_CODES.JELLY_BEAN:
-      case VERSION_CODES.JELLY_BEAN_MR1:
-      case VERSION_CODES.JELLY_BEAN_MR2:
+      case 17:  // Have to use hardcoded version codes here because the latest google.android maven jar is old :(
+      case 18:
         return "Jelly Bean";
-      case VERSION_CODES.KITKAT:
+      case 19:
         return "KitKat";
       default:
         return "Unknown";
