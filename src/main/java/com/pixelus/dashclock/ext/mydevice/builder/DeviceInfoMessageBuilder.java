@@ -15,6 +15,13 @@ public class DeviceInfoMessageBuilder {
   private CpuUsage cpuUsage;
   private MemoryUsage memoryUsage;
   private DeviceName deviceName;
+  private boolean showDeviceName;
+  private boolean showFriendlyVersionName;
+
+  public DeviceInfoMessageBuilder withDeviceName(boolean showDeviceName) {
+    this.showDeviceName = showDeviceName;
+    return this;
+  }
 
   public DeviceInfoMessageBuilder withAlternateDeviceName(boolean useAlternateDeviceName, String alternateDeviceName) {
     String _alternateDeviceName = null;
@@ -54,8 +61,13 @@ public class DeviceInfoMessageBuilder {
     return this;
   }
 
+  public DeviceInfoMessageBuilder withFriendlyVersionName(boolean showFriendlyVersionName) {
+    this.showFriendlyVersionName = showFriendlyVersionName;
+    return this;
+  }
+
   public String buildExpandedTitleMessage() {
-    return deviceName.getFormattedDeviceName();
+    return deviceName.getFormattedDeviceName(showFriendlyVersionName);
   }
 
   public String buildExpandedBodyMessage() {

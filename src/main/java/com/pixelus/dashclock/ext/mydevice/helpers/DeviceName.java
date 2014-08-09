@@ -31,13 +31,18 @@ public class DeviceName {
     return Build.MODEL;
   }
 
-  public String getFormattedDeviceName() {
+  public String getFormattedDeviceName(boolean showFriendlyVersionName) {
+
+    String versionName = "v" + RELEASE;
+    if (showFriendlyVersionName) {
+      versionName = FriendlyVersionNameMapper.getFriendlyVersionName();
+    }
 
     if (alternateDeviceName != null) {
       Log.d(TAG, "Using alternate device name: " + alternateDeviceName);
-      return getContext().getString(R.string.extension_title, alternateDeviceName, RELEASE);
+      return getContext().getString(R.string.extension_title, alternateDeviceName, versionName);
     }
 
-    return getContext().getString(R.string.extension_title, getDeviceName(), RELEASE);
+    return getContext().getString(R.string.extension_title, getDeviceName(), versionName);
   }
 }

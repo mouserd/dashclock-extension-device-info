@@ -15,6 +15,8 @@ public class DeviceInfoExtension extends DashClockExtension {
   public static final String SHOW_DEVICE_UPTIME = "show_device_uptime";
   public static final String SHOW_DEVICE_CPU_USAGE = "show_device_cpu_usage";
   public static final String SHOW_DEVICE_MEMORY_USAGE = "show_device_memory_usage";
+  public static final String SHOW_DEVICE_NAME = "show_device_name";
+  public static final String SHOW_FRIEND_DEVICE_VERSION = "show_friendly_version_name";
 
   private static Context context;
 
@@ -26,7 +28,6 @@ public class DeviceInfoExtension extends DashClockExtension {
 
     DeviceInfoExtension.context = getApplicationContext();
   }
-
 
   public static Context getContext() {
     return context;
@@ -40,14 +41,18 @@ public class DeviceInfoExtension extends DashClockExtension {
     final boolean showDeviceUptime = sp.getBoolean(SHOW_DEVICE_UPTIME, true);
     final boolean showDeviceCpuUsage = sp.getBoolean(SHOW_DEVICE_CPU_USAGE, true);
     final boolean showDeviceMemoryUsage = sp.getBoolean(SHOW_DEVICE_MEMORY_USAGE, true);
+    final boolean showDeviceName = sp.getBoolean(SHOW_DEVICE_NAME, true);
+    final boolean showFriendlyVersionName = sp.getBoolean(SHOW_FRIEND_DEVICE_VERSION, false);
     final boolean useAlternateDeviceName = sp.getBoolean(USE_ALTERNATE_DEVICE_NAME, false);
     final String alternateDeviceName = sp.getString(ALTERNATE_DEVICE_NAME, "");
 
     final DeviceInfoMessageBuilder deviceInfoMessageBuilder = new DeviceInfoMessageBuilder()
+        .withDeviceName(showDeviceName)
         .withAlternateDeviceName(useAlternateDeviceName, alternateDeviceName)
         .withDeviceUptime(showDeviceUptime)
         .withDeviceCpuUsage(showDeviceCpuUsage)
-        .withDeviceMemoryUsage(showDeviceMemoryUsage);
+        .withDeviceMemoryUsage(showDeviceMemoryUsage)
+        .withFriendlyVersionName(showFriendlyVersionName);
 
     publishUpdate(new ExtensionData()
             .visible(true)
