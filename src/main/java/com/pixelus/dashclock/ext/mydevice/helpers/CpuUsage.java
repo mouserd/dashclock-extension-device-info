@@ -1,6 +1,7 @@
 package com.pixelus.dashclock.ext.mydevice.helpers;
 
 import android.util.Log;
+import com.crashlytics.android.Crashlytics;
 import com.pixelus.dashclock.ext.mydevice.R;
 
 import java.io.BufferedReader;
@@ -46,8 +47,14 @@ public class CpuUsage {
     topCpuStats = topCpuStats.trim();
 
     String[] cpuUsagePercentages = topCpuStats.split(" ");
-    userCpuPercentage = Integer.parseInt(cpuUsagePercentages[0]);
-    systemCpuPercentage = Integer.parseInt(cpuUsagePercentages[1]);
+    try {
+      userCpuPercentage = Integer.parseInt(cpuUsagePercentages[0]);
+      systemCpuPercentage = Integer.parseInt(cpuUsagePercentages[1]);
+    } catch (NumberFormatException e) {
+      Crashlytics.log(1, Crashlytics.TAG, "Error formatting top output: " + topCpuStats);
+      Crashlytics.log(1, Crashlytics.TAG, "Unable to parse to integer: "
+          + cpuUsagePercentages[0] + "|" + cpuUsagePercentages[1]);
+    }
     cpuCoreCount = getCpuCoreCount();
 
     Log.d(TAG, format("CPU [user %%: %d, system %%: %d, # %s: %d]", userCpuPercentage, systemCpuPercentage,
@@ -71,14 +78,18 @@ public class CpuUsage {
 
     Process topProcess = null;
     BufferedReader in = null;
-    String output = null;
+    String output = "";
 
     try {
 
       topProcess = getRuntime().exec("top -n 1");
       in = new BufferedReader(new InputStreamReader(topProcess.getInputStream()));
-      while (output == null || output.contentEquals("")) {
-        output = in.readLine();
+      String currentLine = in.readLine();
+      while (output.contentEquals("") && currentLine != null) {
+        if (currentLine.indexOf("User") >= 0) {
+          output = currentLine;
+        }
+        currentLine = in.readLine();
       }
 
     } catch (IOException e) {
