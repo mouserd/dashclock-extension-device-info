@@ -11,7 +11,7 @@ public class FriendlyVersionNameMapper {
 
   public static String getFriendlyVersionName() {
 
-    int versionCode = Build.VERSION.SDK_INT;
+    final int versionCode = Build.VERSION.SDK_INT;
     Log.d(TAG, "Getting friendly version name for versionCode: " + versionCode);
 
     switch (versionCode) {

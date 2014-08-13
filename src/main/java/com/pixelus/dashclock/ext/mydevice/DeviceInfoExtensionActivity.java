@@ -14,7 +14,7 @@ import com.crashlytics.android.Crashlytics;
 public class DeviceInfoExtensionActivity extends PreferenceActivity
     implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-  public void onCreate(Bundle savedInstanceState) {
+  public void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     getActionBar().setIcon(R.drawable.ic_launcher);
     getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -23,14 +23,14 @@ public class DeviceInfoExtensionActivity extends PreferenceActivity
   }
 
   @Override
-  protected void onPostCreate(Bundle savedInstanceState) {
+  protected void onPostCreate(final Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
     setupSimplePreferencesScreen();
     initSummary(getPreferenceScreen());
   }
 
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  public boolean onOptionsItemSelected(final MenuItem item) {
     if (item.getItemId() == android.R.id.home) {
       // TODO: if the previous activity on the stack isn't a ConfigurationActivity, launch it.
       finish();
@@ -65,14 +65,13 @@ public class DeviceInfoExtensionActivity extends PreferenceActivity
     addPreferencesFromResource(R.xml.preferences);
   }
 
-  public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-                                        String key) {
+  public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
     updatePrefSummary(findPreference(key));
   }
 
-  private void initSummary(Preference p) {
+  private void initSummary(final Preference p) {
     if (p instanceof PreferenceGroup) {
-      PreferenceGroup pGrp = (PreferenceGroup) p;
+      final PreferenceGroup pGrp = (PreferenceGroup) p;
       for (int i = 0; i < pGrp.getPreferenceCount(); i++) {
         initSummary(pGrp.getPreference(i));
       }
@@ -81,22 +80,21 @@ public class DeviceInfoExtensionActivity extends PreferenceActivity
     }
   }
 
-  private void updatePrefSummary(Preference p) {
+  private void updatePrefSummary(final Preference p) {
     if (p instanceof ListPreference) {
-      ListPreference listPref = (ListPreference) p;
+      final ListPreference listPref = (ListPreference) p;
       p.setSummary(listPref.getEntry());
     }
     if (p instanceof EditTextPreference) {
-      EditTextPreference editTextPref = (EditTextPreference) p;
-      if (p.getTitle().toString().contains("assword"))
-      {
+      final EditTextPreference editTextPref = (EditTextPreference) p;
+      if (p.getTitle().toString().contains("assword")) {
         p.setSummary("******");
       } else {
         p.setSummary(editTextPref.getText());
       }
     }
     if (p instanceof MultiSelectListPreference) {
-      EditTextPreference editTextPref = (EditTextPreference) p;
+      final EditTextPreference editTextPref = (EditTextPreference) p;
       p.setSummary(editTextPref.getText());
     }
   }

@@ -41,13 +41,11 @@ public class DeviceInfoExtension extends DashClockExtension {
     final boolean showDeviceUptime = sp.getBoolean(SHOW_DEVICE_UPTIME, true);
     final boolean showDeviceCpuUsage = sp.getBoolean(SHOW_DEVICE_CPU_USAGE, true);
     final boolean showDeviceMemoryUsage = sp.getBoolean(SHOW_DEVICE_MEMORY_USAGE, true);
-    final boolean showDeviceName = sp.getBoolean(SHOW_DEVICE_NAME, true);
     final boolean showFriendlyVersionName = sp.getBoolean(SHOW_FRIEND_DEVICE_VERSION, false);
     final boolean useAlternateDeviceName = sp.getBoolean(USE_ALTERNATE_DEVICE_NAME, false);
     final String alternateDeviceName = sp.getString(ALTERNATE_DEVICE_NAME, "");
 
     final DeviceInfoMessageBuilder deviceInfoMessageBuilder = new DeviceInfoMessageBuilder()
-        .withDeviceName(showDeviceName)
         .withAlternateDeviceName(useAlternateDeviceName, alternateDeviceName)
         .withDeviceUptime(showDeviceUptime)
         .withDeviceCpuUsage(showDeviceCpuUsage)

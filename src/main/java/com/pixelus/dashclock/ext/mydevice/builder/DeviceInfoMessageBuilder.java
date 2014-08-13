@@ -15,15 +15,11 @@ public class DeviceInfoMessageBuilder {
   private CpuUsage cpuUsage;
   private MemoryUsage memoryUsage;
   private DeviceName deviceName;
-  private boolean showDeviceName;
   private boolean showFriendlyVersionName;
 
-  public DeviceInfoMessageBuilder withDeviceName(boolean showDeviceName) {
-    this.showDeviceName = showDeviceName;
-    return this;
-  }
+  public DeviceInfoMessageBuilder withAlternateDeviceName(final boolean useAlternateDeviceName,
+                                                          final String alternateDeviceName) {
 
-  public DeviceInfoMessageBuilder withAlternateDeviceName(boolean useAlternateDeviceName, String alternateDeviceName) {
     String _alternateDeviceName = null;
     if (useAlternateDeviceName && alternateDeviceName != null) {
       _alternateDeviceName = alternateDeviceName;
@@ -34,7 +30,7 @@ public class DeviceInfoMessageBuilder {
     return this;
   }
 
-  public DeviceInfoMessageBuilder withDeviceUptime(boolean withDeviceUptime) {
+  public DeviceInfoMessageBuilder withDeviceUptime(final boolean withDeviceUptime) {
 
     if (withDeviceUptime) {
       uptime = new Uptime(SystemClock.elapsedRealtime());
@@ -43,7 +39,7 @@ public class DeviceInfoMessageBuilder {
     return this;
   }
 
-  public DeviceInfoMessageBuilder withDeviceCpuUsage(boolean withDeviceCpuUsage) {
+  public DeviceInfoMessageBuilder withDeviceCpuUsage(final boolean withDeviceCpuUsage) {
 
     if (withDeviceCpuUsage) {
       cpuUsage = new CpuUsage();
@@ -52,7 +48,7 @@ public class DeviceInfoMessageBuilder {
     return this;
   }
 
-  public DeviceInfoMessageBuilder withDeviceMemoryUsage(boolean withDeviceMemoryUsage) {
+  public DeviceInfoMessageBuilder withDeviceMemoryUsage(final boolean withDeviceMemoryUsage) {
 
     if (withDeviceMemoryUsage) {
       memoryUsage = new MemoryUsage();
@@ -61,7 +57,7 @@ public class DeviceInfoMessageBuilder {
     return this;
   }
 
-  public DeviceInfoMessageBuilder withFriendlyVersionName(boolean showFriendlyVersionName) {
+  public DeviceInfoMessageBuilder withFriendlyVersionName(final boolean showFriendlyVersionName) {
     this.showFriendlyVersionName = showFriendlyVersionName;
     return this;
   }

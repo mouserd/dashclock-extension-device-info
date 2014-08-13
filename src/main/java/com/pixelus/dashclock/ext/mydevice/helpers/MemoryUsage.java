@@ -22,8 +22,9 @@ public class MemoryUsage {
 
   private void computeMemoryDetails() {
 
-    ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
-    ActivityManager activityManager = (ActivityManager) getContext().getSystemService(getContext().ACTIVITY_SERVICE);
+    final ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+    final ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
+        getContext().ACTIVITY_SERVICE);
     activityManager.getMemoryInfo(mi);
 
     totalMemoryBytes = mi.totalMem;

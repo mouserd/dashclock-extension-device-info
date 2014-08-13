@@ -15,7 +15,7 @@ public class DeviceName {
 
   private String alternateDeviceName;
 
-  public DeviceName(String alternateDeviceName) {
+  public DeviceName(final String alternateDeviceName) {
 
     this.alternateDeviceName = alternateDeviceName;
   }
@@ -31,7 +31,7 @@ public class DeviceName {
     return Build.MODEL;
   }
 
-  public String getFormattedDeviceName(boolean showFriendlyVersionName) {
+  public String getFormattedDeviceName(final boolean showFriendlyVersionName) {
 
     String versionName = "v" + RELEASE;
     if (showFriendlyVersionName) {

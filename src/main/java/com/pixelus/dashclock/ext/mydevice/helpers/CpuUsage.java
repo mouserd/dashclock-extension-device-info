@@ -46,7 +46,7 @@ public class CpuUsage {
     }
     topCpuStats = topCpuStats.trim();
 
-    String[] cpuUsagePercentages = topCpuStats.split(" ");
+    final String[] cpuUsagePercentages = topCpuStats.split(" ");
     try {
       userCpuPercentage = Integer.parseInt(cpuUsagePercentages[0]);
       systemCpuPercentage = Integer.parseInt(cpuUsagePercentages[1]);
@@ -65,7 +65,7 @@ public class CpuUsage {
 
     try {
 
-      File dir = new File("/sys/devices/system/cpu/");  // Directory containing CPU info
+      final File dir = new File("/sys/devices/system/cpu/");  // Directory containing CPU info
       return dir.listFiles(new CpuFilter()).length;     // Filter the files for CPU types, the result being
       // the number of cores (virtual CPU devices)
     } catch (Exception e) {
