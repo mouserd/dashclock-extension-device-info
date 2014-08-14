@@ -52,8 +52,7 @@ public class CpuUsage {
       systemCpuPercentage = Integer.parseInt(cpuUsagePercentages[1]);
     } catch (NumberFormatException e) {
       Crashlytics.log(1, Crashlytics.TAG, "Error formatting top output: " + topCpuStats);
-      Crashlytics.log(1, Crashlytics.TAG, "Unable to parse to integer: "
-          + cpuUsagePercentages[0] + "|" + cpuUsagePercentages[1]);
+      Crashlytics.log(1, Crashlytics.TAG, "Unable to parse to integer: " + cpuUsagePercentages);
     }
     cpuCoreCount = getCpuCoreCount();
 
