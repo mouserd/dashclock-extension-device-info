@@ -5,12 +5,12 @@
 
   <groupId>com.pixelus.dashclock.ext</groupId>
   <artifactId>device-info</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4</version>
   <packaging>apk</packaging>
   <name>DashClock Device Info Extension</name>
 
   <properties>
-    <project.versionCode>12</project.versionCode>
+    <project.versionCode>13</project.versionCode>
     <platform.version>4.1.1.4</platform.version>
     <android.plugin.version>3.9.0-rc.2</android.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
