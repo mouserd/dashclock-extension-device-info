@@ -52,5 +52,6 @@ the Google Playstore.  As such, the release build process will ensure that the c
 
 4. Build a **release** apk using maven:  
    ```
-   mvn clean install -P release
+   mvn clean install -P android-release
    ```
+   Note: a relevant profile should exist in your ~/.m2/settings.xml that defines the key signing properties used by the jarsigner.
