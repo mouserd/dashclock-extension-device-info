@@ -44,6 +44,8 @@ public class FriendlyVersionNameMapper {
         return "Jelly Bean";
       case 19:
         return "KitKat";
+      case 21:
+        return "Lollipop";
       default:
         return "Unknown";
     }
