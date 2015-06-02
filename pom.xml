@@ -12,7 +12,7 @@
   <properties>
     <project.versionCode>14</project.versionCode>
     <platform.version>4.1.1.4</platform.version>
-    <android.plugin.version>3.9.0-rc.2</android.plugin.version>
+    <android.plugin.version>4.0.0-rc.2</android.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -61,7 +61,7 @@
       <resource>
         <targetPath>${project.basedir}/target/filtered-manifest</targetPath>
         <filtering>true</filtering>
-        <directory>${basedir}</directory>
+        <directory>${basedir}/src/main</directory>
         <includes>
           <include>AndroidManifest.xml</include>
         </includes>
@@ -82,11 +82,11 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/res</outputDirectory>
+              <outputDirectory>${project.basedir}/src/main/res</outputDirectory>
               <resources>
                 <resource>
                   <directory>${project.basedir}/src/templates/res</directory>
-                  <targetPath>${project.basedir}/res</targetPath>
+                  <targetPath>${project.basedir}/src/main/res</targetPath>
                   <filtering>true</filtering>
                 </resource>
               </resources>
@@ -107,6 +107,7 @@
             <debuggable>true</debuggable>
           </manifest>
           <androidManifestFile>${project.build.directory}/filtered-manifest/AndroidManifest.xml</androidManifestFile>
+          <failOnNonStandardStructure>false</failOnNonStandardStructure>
         </configuration>
         <executions>
           <execution>
@@ -123,9 +124,9 @@
         <artifactId>crashlytics-maven</artifactId>
         <version>1.9.1</version>
         <configuration>
-          <androidAssetsPath>${project.basedir}/assets</androidAssetsPath>
-          <androidManifestPath>${project.basedir}/AndroidManifest.xml</androidManifestPath>
-          <androidResPath>${project.basedir}/res</androidResPath>
+          <androidAssetsPath>${project.basedir}/src/main/assets</androidAssetsPath>
+          <androidManifestPath>${project.basedir}/src/main/AndroidManifest.xml</androidManifestPath>
+          <androidResPath>${project.basedir}/src/main/res</androidResPath>
         </configuration>
         <executions>
           <execution>
@@ -257,6 +258,7 @@
                 <skip>false</skip>
               </proguard>
               <androidManifestFile>${project.build.directory}/filtered-manifest/AndroidManifest.xml</androidManifestFile>
+              <failOnNonStandardStructure>false</failOnNonStandardStructure>
             </configuration>
             <executions>
               <execution>
