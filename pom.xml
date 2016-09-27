@@ -13,7 +13,7 @@
     <project.versionCode>14</project.versionCode>
     <android.platform>4.4.2_r4</android.platform> <!-- Used for zipalign, proguard, dex, etc (i.e android-build-tools) -->
     <android.plugin.version>4.1.1</android.plugin.version>
-    <android.sdk.version>21</android.sdk.version>
+    <android.sdk.version>19</android.sdk.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
