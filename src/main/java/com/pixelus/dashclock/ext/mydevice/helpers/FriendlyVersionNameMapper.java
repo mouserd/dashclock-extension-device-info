@@ -45,7 +45,10 @@ public class FriendlyVersionNameMapper {
       case 19:
         return "KitKat";
       case 21:
+      case 22:
         return "Lollipop";
+      case 23:
+        return "Marshmallow";
       default:
         return "Unknown";
     }
