@@ -18,8 +18,8 @@
 
   <repositories>
     <repository>
-      <id>crashlytics-repo</id>
-      <url>http://download.crashlytics.com/maven</url>
+      <id>fabric-repo</id>
+      <url>https://maven.fabric.io/public</url>
     </repository>
   </repositories>
 
@@ -49,9 +49,11 @@
       <version>2.0.0</version>
     </dependency>
     <dependency>
-      <groupId>com.crashlytics.android</groupId>
+      <groupId>com.crashlytics.sdk.android</groupId>
       <artifactId>crashlytics</artifactId>
-      <version>[1.1.10,)</version>
+      <version>2.6.4</version>
+      <scope>compile</scope>
+      <type>aar</type>
     </dependency>
   </dependencies>
 
@@ -122,7 +124,7 @@
       <plugin>
         <groupId>com.crashlytics</groupId>
         <artifactId>crashlytics-maven</artifactId>
-        <version>1.9.1</version>
+        <version>1.12.0</version>
         <configuration>
           <androidAssetsPath>${project.basedir}/src/main/assets</androidAssetsPath>
           <androidManifestPath>${project.basedir}/src/main/AndroidManifest.xml</androidManifestPath>

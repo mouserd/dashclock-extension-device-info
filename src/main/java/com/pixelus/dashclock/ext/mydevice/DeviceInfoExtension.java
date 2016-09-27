@@ -7,6 +7,7 @@ import com.crashlytics.android.Crashlytics;
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
 import com.pixelus.dashclock.ext.mydevice.builder.DeviceInfoMessageBuilder;
+import io.fabric.sdk.android.Fabric;
 
 public class DeviceInfoExtension extends DashClockExtension {
 
@@ -24,7 +25,7 @@ public class DeviceInfoExtension extends DashClockExtension {
   public void onCreate() {
     super.onCreate();
 
-    Crashlytics.start(this);
+    Fabric.with(this, new Crashlytics());
 
     DeviceInfoExtension.context = getApplicationContext();
   }

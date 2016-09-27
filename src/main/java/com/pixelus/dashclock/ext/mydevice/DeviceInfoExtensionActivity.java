@@ -10,6 +10,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class DeviceInfoExtensionActivity extends PreferenceActivity
     implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -19,7 +20,7 @@ public class DeviceInfoExtensionActivity extends PreferenceActivity
     getActionBar().setIcon(R.drawable.ic_launcher);
     getActionBar().setDisplayHomeAsUpEnabled(true);
 
-    Crashlytics.start(this);
+    Fabric.with(this, new Crashlytics());
   }
 
   @Override
