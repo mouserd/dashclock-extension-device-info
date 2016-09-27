@@ -11,13 +11,17 @@
 
   <properties>
     <project.versionCode>14</project.versionCode>
-    <android.platform>4.1.1.4</android.platform>
+    <android.platform>4.4.2_r4</android.platform> <!-- Used for zipalign, proguard, dex, etc (i.e android-build-tools) -->
     <android.plugin.version>4.1.1</android.plugin.version>
     <android.sdk.version>21</android.sdk.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
     <repository>
       <id>fabric-repo</id>
       <url>https://maven.fabric.io/public</url>
@@ -39,7 +43,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.android</groupId>
+      <groupId>android</groupId>
       <artifactId>android</artifactId>
       <version>${android.platform}</version>
       <scope>provided</scope>
