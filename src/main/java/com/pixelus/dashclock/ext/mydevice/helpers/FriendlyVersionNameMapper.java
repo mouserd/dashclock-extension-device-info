@@ -49,6 +49,8 @@ public class FriendlyVersionNameMapper {
         return "Lollipop";
       case 23:
         return "Marshmallow";
+      case 24:
+        return "Nougat";
       default:
         return "Unknown";
     }
