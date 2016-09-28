@@ -1,4 +1,11 @@
 language: android
+before_install:
+  # Download required maven android sdk jar (i.e. see the 'provided' google:google.jar in pom.xml)
+  - cd ..
+  - git clone git://github.com/mosabua/maven-android-sdk-deployer.git
+  - cd maven-android-sdk-deployer/platforms
+  - mvn install -P4.4
+  - cd $TRAVIS_BUILD_DIR
 android:
   components:
     - build-tools-19.1.0
